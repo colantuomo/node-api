@@ -1,0 +1,4 @@
+- tsc -w  <-- Ficar verificando o script em typescript (-w de watch)
+- instalado a biblioteca 'nodemon', para estar sempre ouvindo e executando as mudanças feitas no script node
+- caso vá usar o mongodb, precisa iniciar o mesmo na pasta executando em: 
+C:\Program Files\MongoDB\Server\4.0\bin\mongod.exe
