@@ -1,2 +1,2 @@
 # NODEJS API
-NodeJS + Restify + Mongoose/MongoDB
+NodeJS w/ Typescript + Restify + Mongoose/MongoDB
