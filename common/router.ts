@@ -4,6 +4,9 @@ import { EventEmitter } from 'events';
 export abstract class Router extends EventEmitter {
     abstract applyRoutes(application: restify.Server)
     // Metodo criado para tratar casos comuns de um retorno de uma requisição
+}
+
+export abstract class RenderRequest extends EventEmitter {
     render(response: restify.Response, next: restify.Next) {
         return (document) => {
             if (document) {

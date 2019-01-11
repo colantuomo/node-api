@@ -2,7 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const events_1 = require("events");
 class Router extends events_1.EventEmitter {
-    // Metodo criado para tratar casos comuns de um retorno de uma requisição
+}
+exports.Router = Router;
+class RenderRequest extends events_1.EventEmitter {
     render(response, next) {
         return (document) => {
             if (document) {
@@ -16,4 +18,4 @@ class Router extends events_1.EventEmitter {
         };
     }
 }
-exports.Router = Router;
+exports.RenderRequest = RenderRequest;
