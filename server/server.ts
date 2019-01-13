@@ -29,6 +29,7 @@ export class Server {
                 /* Foi criado uma maneira de tratar corretamente requisições 'PATCH'. 
                 Validando se o content-type é do tipo: 'merge-path+json' ao invés do padrao 'json' */
                 this.application.use(mergePatchBodyParser)
+
                 routers.forEach(router => {
                     router.applyRoutes(this.application)
                 });
