@@ -15,18 +15,16 @@ class UsersService extends router_1.RenderRequest {
     update(req, resp, next) {
         /* overwrite irá substituir o documento da collection pelo novo, caso seja true.
             Se false irá substituir somente os campos que encontrar no body */
-        const options = { overwrite: true };
+        const options = { overwrite: false };
         users_model_1.User.update({ _id: req.params.id }, req.body, options)
             .exec().then(result => {
             // Propriedade 'n' indica se o update alterou alguma linha
-            result.then(() => {
+            if (result.n) {
                 return users_model_1.User.findById(req.params.id);
-            });
-            // if (result.n) {
-            //     return User.findById(req.params.id)
-            // } else {
-            //     resp.send(404)
-            // }
+            }
+            else {
+                resp.send(404);
+            }
         }).then(this.render(resp, next));
     }
     findAndUpdate(req, resp, next) {

@@ -19,18 +19,15 @@ class UsersService extends RenderRequest {
     update(req: restify.Request, resp: restify.Response, next: restify.Next) {
         /* overwrite irá substituir o documento da collection pelo novo, caso seja true.
             Se false irá substituir somente os campos que encontrar no body */
-        const options = { overwrite: true }
+        const options = { overwrite: false }
         User.update({ _id: req.params.id }, req.body, options)
             .exec().then(result => {
                 // Propriedade 'n' indica se o update alterou alguma linha
-                result.then(() => {
+                if (result.n) {
                     return User.findById(req.params.id)
-                })
-                // if (result.n) {
-                //     return User.findById(req.params.id)
-                // } else {
-                //     resp.send(404)
-                // }
+                } else {
+                    resp.send(404)
+                }
             }).then(this.render(resp, next))
     }
 

@@ -1,8 +1,8 @@
 import { Server } from './server/server'
-import { usersRouter } from './routes/users.router';
+import { routes } from './routes/routes';
 
 const server = new Server()
-server.bootstrap([usersRouter]).then(server => {
+server.bootstrap(routes).then(server => {
     console.log('server running on: ', server.application.address())
 }).catch(err => {
     console.log(err)
