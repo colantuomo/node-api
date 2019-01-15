@@ -1,6 +1,6 @@
 import * as restify from 'restify'
-import { Router } from '../common/router'
-import { usersService } from '../services/users.service';
+import { Router } from '../server/router'
+import { usersService } from './users.service';
 
 class UsersRouter extends Router {
 

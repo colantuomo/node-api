@@ -1,6 +1,6 @@
 import * as restify from 'restify'
-import { User } from '../models/users.model';
-import { RenderRequest } from '../common/router';
+import { User } from './users.model';
+import { RenderRequest } from '../server/router';
 
 class UsersService extends RenderRequest {
 
@@ -20,15 +20,7 @@ class UsersService extends RenderRequest {
         /* overwrite irá substituir o documento da collection pelo novo, caso seja true.
             Se false irá substituir somente os campos que encontrar no body */
         const options = { overwrite: false }
-        User.update({ _id: req.params.id }, req.body, options)
-            .exec().then(result => {
-                // Propriedade 'n' indica se o update alterou alguma linha
-                if (result.n) {
-                    return User.findById(req.params.id)
-                } else {
-                    resp.send(404)
-                }
-            }).then(this.render(resp, next))
+        User.update({ _id: req.params.id }, req.body, options).then(this.render(resp, next))
     }
 
     findAndUpdate(req: restify.Request, resp: restify.Response, next: restify.Next) {
